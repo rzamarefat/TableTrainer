@@ -1,5 +1,5 @@
 import initialState from "./initiaState"
-import { CHANGE_DESK, UPLOAD } from "./actionTypes";
+import { CHANGE_DESK, SET_COLUMNS_NAMES, SET_DATA_VALUES, SET_NUMBER_OF_DATAROWS_TO_BE_SHOWN, UPDATE_DATASET_INFO, UPLOAD } from "./actionTypes";
 
 
 const reducer = (state = initialState, action) => {
@@ -13,6 +13,31 @@ const reducer = (state = initialState, action) => {
                 ...state, 
                 dataframe: action.payload,
             }
+
+        case SET_COLUMNS_NAMES:
+            return {
+                ...state,
+                columnsnames: action.payload,
+            }
+
+        case SET_DATA_VALUES:
+            return {
+                ...state,
+                datavalues: action.payload
+            }
+
+        case UPDATE_DATASET_INFO:
+            return {
+                ...state,
+                datasetInfo: action.payload
+            }
+
+        case SET_NUMBER_OF_DATAROWS_TO_BE_SHOWN:
+            return {
+                ...state,
+                numberOfRowsToShow: action.payload
+            }
+        
 
         
         default:
