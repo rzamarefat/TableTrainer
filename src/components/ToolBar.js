@@ -23,6 +23,7 @@ function ToolBar() {
           <Nav className="me-auto">
             <Nav.Link onClick={() => handleClick("DATA")}>Data</Nav.Link>
             <Nav.Link onClick={() => handleClick("EXPLORE")}>Explore</Nav.Link>
+            <Nav.Link onClick={() => handleClick("MODEL_VIEW")}>Model</Nav.Link>
             <Nav.Link onClick={() => handleClick("TRAIN")}>Train</Nav.Link>
             <Nav.Link onClick={() => handleClick("EVALUATE")}>Evaluate</Nav.Link>
             <Nav.Link onClick={() => handleClick("PREDICT")}>Predict</Nav.Link>

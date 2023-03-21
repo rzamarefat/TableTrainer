@@ -5,6 +5,7 @@ import Explore from './Explore'
 import Train from './Train'
 import Evaluate from './Evaluate'
 import Predict from './Predict'
+import ModelView from './ModelView'
 
 
 
@@ -18,6 +19,7 @@ const Desk = () => {
             <div className='col '>
                 {deskName === "DATA" && <Data/>}
                 {deskName === "EXPLORE" && <Explore/>}
+                {deskName === "MODEL_VIEW" && <ModelView/>}
                 {deskName === "TRAIN" && <Train/>}
                 {deskName === "EVALUATE" && <Evaluate/>}
                 {deskName === "PREDICT" && <Predict/>}

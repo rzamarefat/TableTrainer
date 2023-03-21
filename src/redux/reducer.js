@@ -1,5 +1,5 @@
 import initialState from "./initiaState"
-import { CHANGE_DESK, SET_COLUMNS_NAMES, SET_DATA_VALUES, SET_NUMBER_OF_DATAROWS_TO_BE_SHOWN, UPDATE_DATASET_INFO, UPLOAD } from "./actionTypes";
+import { CHANGE_DESK, CHOOSE_LAYER_TYPE, SET_COLUMNS_NAMES, SET_DATA_VALUES, SET_NUMBER_OF_DATAROWS_TO_BE_SHOWN, UPDATE_DATASET_INFO, UPLOAD } from "./actionTypes";
 
 
 const reducer = (state = initialState, action) => {
@@ -36,6 +36,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 numberOfRowsToShow: action.payload
+            }
+
+        case CHOOSE_LAYER_TYPE:
+            return {
+                ...state,
+                chosenLayerType: action.payload
             }
         
 
