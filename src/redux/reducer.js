@@ -1,5 +1,5 @@
 import initialState from "./initiaState"
-import { CHANGE_DESK } from "./actionTypes";
+import { CHANGE_DESK, UPLOAD } from "./actionTypes";
 
 
 const reducer = (state = initialState, action) => {
@@ -8,6 +8,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state, deskSection: action.payload
             }
+        case UPLOAD:
+            return {
+                ...state, 
+                dataframe: action.payload,
+            }
+
         
         default:
             return state;

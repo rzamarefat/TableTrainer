@@ -1,5 +1,6 @@
 const initialState = {
-    "deskSection": "DATA"
+    "deskSection": "DATA",
+    "dataframe": null,
 }
 
 

@@ -1,4 +1,5 @@
-import {CHANGE_DESK} from './actionTypes'
+import {CHANGE_DESK, UPLOAD} from './actionTypes'
+
 
 
 export const changeDesk = (deskName) => {
@@ -7,4 +8,11 @@ export const changeDesk = (deskName) => {
         payload: deskName
     }
 
+}
+
+export const upload = (imageFile) => {
+    return {
+        type: UPLOAD,
+        payload: imageFile
+    }
 }
