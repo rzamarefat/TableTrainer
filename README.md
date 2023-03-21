@@ -1,1 +1,1 @@
-# React Redux Boilerplate
+# Table Trainer
