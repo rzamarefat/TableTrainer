@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Table from 'react-bootstrap/Table';
 import { setNumberOfDataRowsToShow } from '../redux/actions';
+import { useEffect } from 'react';
 
 const DataTable =  () => {
   const columnsnames = useSelector(state => state.columnsnames)
@@ -13,6 +14,10 @@ const DataTable =  () => {
 
   const dispatch = useDispatch()
 
+  useEffect(()=>{
+
+  }, [numberOfRowsToShow])
+
 
   return (
     <>
@@ -20,14 +25,14 @@ const DataTable =  () => {
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-default">Number of rows to show (Total: {totalNumberOfSamples})</span>
         </div>
-        <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" defaultValue={numberOfRowsToShow} onChange={(e) => dispatch(setNumberOfDataRowsToShow(parseInt(e.target.value)))}/>
+        <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" defaultValue={numberOfRowsToShow} onChange={(e) => dispatch(setNumberOfDataRowsToShow(parseInt(e.target.value)))} min="1" max={totalNumberOfSamples}/>
     </div>
     <Table striped bordered hover variant="dark">
       <thead>
         <tr>
           
 
-          {columnsnames.map(cn => {
+          {["#", ...columnsnames].map(cn => {
             return (
               <th>{cn}</th>
             )
@@ -35,11 +40,11 @@ const DataTable =  () => {
       
         </tr>
       </thead>
-        {datavalues && <tbody>
-          {[...Array(5).keys()].map(i => {
+        {(datavalues && numberOfRowsToShow) && <tbody>
+          {[...Array(numberOfRowsToShow).keys()].map(i => {
             return (
               <tr>
-                {datavalues[i] && datavalues[i].map(d => <td>{d}</td>)}
+                {datavalues[i] && [i, ...datavalues[i]].map((d, id) => (<td>{d}</td>))}
               </tr>
             )
           })}
