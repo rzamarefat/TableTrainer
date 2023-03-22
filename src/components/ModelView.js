@@ -4,12 +4,20 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import NewLayer from './NewLayer';
 import ModelTree from './ModelTree';
+import Model from '../ml/Model';
 
 const ModelView = () => {
     const chosenLayerType = useSelector(state => state.chosenLayerType)
     const modelLayers = useSelector(state => state.modelLayers)
 
     const dispatch = useDispatch()
+
+    const handleCompileClick = () => { 
+      console.log(modelLayers)
+      const model = new Model(modelLayers)
+
+      model.buildModel()
+    }
 
 
   return (
@@ -24,7 +32,7 @@ const ModelView = () => {
             {modelLayers.length !== 0 && <ModelTree />}
             
         </div>
-        <button className="btn btn-dark mt-5">Compile Model</button>
+        <button className="btn btn-dark mt-5" onClick={() => handleCompileClick()}>Compile Model</button>
      </div>
     </>
   )

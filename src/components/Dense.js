@@ -37,11 +37,11 @@ const Dense = () => {
     <Form>
                 <div className="d-flex flex-column">
                     <label className=''>Units</label>
-                    <input type="number" name="myRadio" value={units} onChange={(e)=>setUnits(e.target.value)} min="0" />
+                    <input type="number" name="myRadio" value={units} onChange={(e)=>setUnits(parseInt(e.target.value))} min="0" />
                 </div>
                 <div className="d-flex flex-column">
                     <label className=''>Input shape</label>
-                    <input type="number" name="myRadio" value={inputShape} onChange={(e) => setInputShape(e.target.value)} />
+                    <input type="number" name="myRadio" value={inputShape} onChange={(e) => setInputShape(parseInt(e.target.value))} />
                 </div>
 
                 <div className="d-flex flex-column">

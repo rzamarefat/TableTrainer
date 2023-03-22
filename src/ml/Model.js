@@ -3,8 +3,8 @@ import * as tf from "@tensorflow/tfjs"
 // import { LinearRegression, setBackend } from 'scikitjs'
     
 
-const makeModel = async() => {
-    const model = tf.sequential();
+// const makeModel = async() => {
+    // const model = tf.sequential();
     // model.add(tf.layers.dense({units: 32, inputShape: [50]}));
     // model.add(tf.layers.dense({units: 4}));
     // console.log(JSON.stringify(model.outputs[0].shape))
@@ -30,6 +30,34 @@ const makeModel = async() => {
     // await lr.fit(X, y)
     // console.log(lr.coef)
 
-}
+// }
 
-export default makeModel
+// export default makeModel
+
+
+export default class Model {
+    constructor(layers){
+        this.layers = layers;
+    }
+
+
+    buildModel = () => {
+        const model = tf.sequential();
+
+        this.layers.forEach(layer => {
+            if (layer.chosenLayerType === "Dense"){
+                model.add(tf.layers.dense({units: layer.layerConfig.units, inputShape: [layer.layerConfig.inputShape], activation: layer.layerConfig.activation}));
+            }
+            
+
+        });
+
+        console.log(model)
+
+    }
+    
+
+
+
+
+}
