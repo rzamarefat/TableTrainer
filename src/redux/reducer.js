@@ -53,10 +53,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 modelLayers: state.modelLayers.filter(layer => layer.id !== action.payload)
-            }
-
-        
-
+            }   
         
         default:
             return state;

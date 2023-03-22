@@ -7,7 +7,7 @@ import ModelTree from './ModelTree';
 
 const ModelView = () => {
     const chosenLayerType = useSelector(state => state.chosenLayerType)
-
+    const modelLayers = useSelector(state => state.modelLayers)
 
     const dispatch = useDispatch()
 
@@ -19,8 +19,9 @@ const ModelView = () => {
         <div className="col-sm-5 border p-3">
             <NewLayer/>
         </div>
-        <div className="col-sm-6 d-flex flex-column justify-content-center align-items-center">
-            <ModelTree/>
+        <div className="col-sm-6 d-flex flex-column justify-content-center align-items-center bg-light">
+            {modelLayers.length === 0 && <h1>No model</h1>}
+            {modelLayers.length !== 0 && <ModelTree />}
         </div>
      </div>
     </>

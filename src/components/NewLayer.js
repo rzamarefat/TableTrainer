@@ -1,11 +1,15 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+
 import { chooseLayerType, setModelLayers } from '../redux/actions';
-import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
+import Dense from './Dense';
+import Conv1D from './Conv1D';
+import BatchNorm from './BatchNorm';
+import Flatten from './Flatten'
+import AvgPool from './AvgPool'
+import MaxPool from './MaxPool';
 
 
 const NewLayer = () => {
@@ -27,9 +31,11 @@ const NewLayer = () => {
         <h4>
             Add a layer
         </h4>
+        <hr/>
+
         <div className="d-flex flex-column">
             
-            <label className=''>Layer Type</label>
+            <h6 className='mb-1'>Layer Type</h6>
             <Form>
                 <Form.Check
                         inline
@@ -78,7 +84,7 @@ const NewLayer = () => {
                 />
                 <Form.Check
                         inline
-                        label="Flatten"
+                        label="Flatten"Desne
                         name="group1"
                         type="radio"
                         id="Flatten"
@@ -87,12 +93,17 @@ const NewLayer = () => {
                 />
             </Form>
             <hr/>
-            <div className='d-flex flex-row mt-1'>
-                <label className=''>Input shape</label>
-                <input type="text" name="myRadio"/>
-            </div>
+
             
-            
+            <h6 className='mb-1'>Layer Config</h6>
+            {chosenLayerType === "Dense" && <Dense />}
+            {chosenLayerType === "Conv1D" && <Conv1D />}
+            {chosenLayerType === "BatchNorm" && <BatchNorm />}
+            {chosenLayerType === "AvgPool" && <AvgPool />}
+            {chosenLayerType === "MaxPool" && <MaxPool />}
+            {chosenLayerType === "Flatten" && <Flatten />}
+
+
         </div>
         <hr/>
         <Button variant="dark w-100" onClick={() => handleAddClick()}>Add</Button>
