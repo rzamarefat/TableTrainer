@@ -14,7 +14,8 @@ const initialState = {
     "datavalues": [],
 
 
-    "chosenLayerType": "Dense"
+    "chosenLayerType": "Dense",
+    "modelLayers": []
 
 
 
