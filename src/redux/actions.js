@@ -1,4 +1,4 @@
-import {CHANGE_DESK, CHOOSE_LAYER_TYPE, SET_COLUMNS_NAMES, SET_DATA_VALUES, SET_MODEL_LAYERS, SET_NUMBER_OF_DATAROWS_TO_BE_SHOWN, UPDATE_DATASET_INFO, UPLOAD} from './actionTypes'
+import {CHANGE_DESK, CHOOSE_LAYER_TYPE, REMOVE_LAYER_FROM_MODEL, SET_COLUMNS_NAMES, SET_DATA_VALUES, SET_MODEL_LAYERS, SET_NUMBER_OF_DATAROWS_TO_BE_SHOWN, UPDATE_DATASET_INFO, UPLOAD} from './actionTypes'
 
 
 
@@ -63,5 +63,12 @@ export const setModelLayers = (modelObject) =>{
     return {
         type: SET_MODEL_LAYERS,
         payload: modelObject
+    }
+}
+
+export const removeLayerFromModel = (layerID) => {
+    return {
+        type: REMOVE_LAYER_FROM_MODEL,
+        payload: layerID
     }
 }

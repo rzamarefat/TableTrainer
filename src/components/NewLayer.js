@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { chooseLayerType, setModelLayers } from '../redux/actions';
 import InputGroup from 'react-bootstrap/InputGroup';
+import Form from 'react-bootstrap/Form';
+
 
 const NewLayer = () => {
     const chosenLayerType = useSelector(state => state.chosenLayerType)
@@ -13,7 +15,10 @@ const NewLayer = () => {
 
 
     const handleAddClick = () => {
-        dispatch(setModelLayers(chosenLayerType))
+        dispatch(setModelLayers({
+            "chosenLayerType": chosenLayerType,
+            "id": Date.now().toString(36) + Math.random().toString(36).substr(2)
+        }))
 
     }
 
@@ -22,44 +27,66 @@ const NewLayer = () => {
         <h4>
             Add a layer
         </h4>
-        <div className="btn-group d-flex flex-column">
+        <div className="d-flex flex-column">
             
-            <Dropdown>
-            <label className='mr-5  '>layer</label>
-                <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
-                    {chosenLayerType}
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu variant="dark">
-                    <Dropdown.Item href="#/action-1" onClick={() => dispatch(chooseLayerType("Dense"))}>
-                        Dense
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-1" onClick={() => dispatch(chooseLayerType("Conv1D"))}>
-                        Conv1D
-                    </Dropdown.Item>
-
-
-                    <Dropdown.Item href="#/action-1" onClick={() => dispatch(chooseLayerType("BatchNorm"))}>
-                        BatchNorm
-                    </Dropdown.Item>
-
-
-                    <Dropdown.Item href="#/action-1" onClick={() => dispatch(chooseLayerType("AvgPool"))}>
-                        AvgPool
-                    </Dropdown.Item>
-
-                    <Dropdown.Item href="#/action-1" onClick={() => dispatch(chooseLayerType("MaxPool"))}>
-                        MaxPool
-                    </Dropdown.Item>
-
-                    <Dropdown.Item href="#/action-1" onClick={() => dispatch(chooseLayerType("Flatten"))}>
-                        Flatten
-                    </Dropdown.Item>
-                </Dropdown.Menu>
-                
-            </Dropdown>
-
-            
+            <label className=''>Layer Type</label>
+            <Form>
+                <Form.Check
+                        inline
+                        label="Dense"
+                        name="group1"
+                        type="radio"
+                        id="Dense"
+                        checked={chosenLayerType === "Dense"}
+                        onChange={() => dispatch(chooseLayerType("Dense"))}
+                />
+                <Form.Check
+                        inline
+                        label="Conv1D"
+                        name="group1"
+                        type="radio"
+                        id="Conv1D"
+                        checked={chosenLayerType === "Conv1D"}
+                        onChange={() => dispatch(chooseLayerType("Conv1D"))}
+                />
+                <Form.Check
+                        inline
+                        label="BatchNorm"
+                        name="group1"
+                        type="radio"
+                        id="BatchNorm"
+                        checked={chosenLayerType === "BatchNorm"}
+                        onChange={() => dispatch(chooseLayerType("BatchNorm"))}
+                />
+                <Form.Check
+                        inline
+                        label="AvgPool"
+                        name="group1"
+                        type="radio"
+                        id="AvgPool"
+                        checked={chosenLayerType === "AvgPool"}
+                        onChange={() => dispatch(chooseLayerType("AvgPool"))}
+                />
+                <Form.Check
+                        inline
+                        label="MaxPool"
+                        name="group1"
+                        type="radio"
+                        id="MaxPool"
+                        checked={chosenLayerType === "MaxPool"}
+                        onChange={() => dispatch(chooseLayerType("MaxPool"))}
+                />
+                <Form.Check
+                        inline
+                        label="Flatten"
+                        name="group1"
+                        type="radio"
+                        id="Flatten"
+                        checked={chosenLayerType === "Flatten"}
+                        onChange={() => dispatch(chooseLayerType("Flatten"))}            
+                />
+            </Form>
+            <hr/>
             <div className='d-flex flex-row mt-1'>
                 <label className=''>Input shape</label>
                 <input type="text" name="myRadio"/>

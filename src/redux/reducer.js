@@ -1,5 +1,5 @@
 import initialState from "./initiaState"
-import { CHANGE_DESK, CHOOSE_LAYER_TYPE, SET_COLUMNS_NAMES, SET_DATA_VALUES, SET_MODEL_LAYERS, SET_NUMBER_OF_DATAROWS_TO_BE_SHOWN, UPDATE_DATASET_INFO, UPLOAD } from "./actionTypes";
+import { CHANGE_DESK, CHOOSE_LAYER_TYPE, SET_COLUMNS_NAMES, SET_DATA_VALUES, SET_MODEL_LAYERS, SET_NUMBER_OF_DATAROWS_TO_BE_SHOWN, UPDATE_DATASET_INFO, UPLOAD, REMOVE_LAYER_FROM_MODEL } from "./actionTypes";
 
 
 const reducer = (state = initialState, action) => {
@@ -45,10 +45,16 @@ const reducer = (state = initialState, action) => {
             }
         
         case SET_MODEL_LAYERS:
-                return {
-                    ...state,
-                    modelLayers: [...state.modelLayers, action.payload]
-                }
+            return {
+                ...state,
+                modelLayers: [...state.modelLayers, action.payload]
+            }
+        case REMOVE_LAYER_FROM_MODEL:
+            return {
+                ...state,
+                modelLayers: state.modelLayers.filter(layer => layer.id !== action.payload)
+            }
+
         
 
         
