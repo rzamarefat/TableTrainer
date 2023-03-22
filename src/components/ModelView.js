@@ -22,7 +22,9 @@ const ModelView = () => {
         <div className="col-sm-6 d-flex flex-column justify-content-center align-items-center bg-light">
             {modelLayers.length === 0 && <h1>No model</h1>}
             {modelLayers.length !== 0 && <ModelTree />}
+            
         </div>
+        <button className="btn btn-dark mt-5">Compile Model</button>
      </div>
     </>
   )

@@ -15,7 +15,10 @@ const initialState = {
 
 
     "chosenLayerType": "Dense",
-    "modelLayers": []
+    "modelLayers": [],
+
+
+    "currentDenseState": null,
 
 
 

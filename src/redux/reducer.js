@@ -1,5 +1,5 @@
 import initialState from "./initiaState"
-import { CHANGE_DESK, CHOOSE_LAYER_TYPE, SET_COLUMNS_NAMES, SET_DATA_VALUES, SET_MODEL_LAYERS, SET_NUMBER_OF_DATAROWS_TO_BE_SHOWN, UPDATE_DATASET_INFO, UPLOAD, REMOVE_LAYER_FROM_MODEL } from "./actionTypes";
+import { CHANGE_DESK, CHOOSE_LAYER_TYPE, SET_COLUMNS_NAMES, SET_DATA_VALUES, SET_MODEL_LAYERS, SET_NUMBER_OF_DATAROWS_TO_BE_SHOWN, UPDATE_DATASET_INFO, UPLOAD, REMOVE_LAYER_FROM_MODEL, SET_CURRENT_DENSE_LAYER } from "./actionTypes";
 
 
 const reducer = (state = initialState, action) => {
@@ -54,7 +54,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 modelLayers: state.modelLayers.filter(layer => layer.id !== action.payload)
             }   
-        
+        case SET_CURRENT_DENSE_LAYER:
+            return {
+                ...state,
+                "currentDenseState": action.payload
+            }
         default:
             return state;
     }

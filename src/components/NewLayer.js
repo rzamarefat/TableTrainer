@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from 'react-bootstrap/Button';
 
-import { chooseLayerType, setModelLayers } from '../redux/actions';
+import { chooseLayerType, setCurrentDenseLayer, setModelLayers } from '../redux/actions';
 import Form from 'react-bootstrap/Form';
 import Dense from './Dense';
 import Conv1D from './Conv1D';
@@ -14,6 +14,8 @@ import MaxPool from './MaxPool';
 
 const NewLayer = () => {
     const chosenLayerType = useSelector(state => state.chosenLayerType)
+    const currentDenseState = useSelector(state => state.currentDenseState)
+
 
     const dispatch = useDispatch()
 
@@ -21,9 +23,10 @@ const NewLayer = () => {
     const handleAddClick = () => {
         dispatch(setModelLayers({
             "chosenLayerType": chosenLayerType,
-            "id": Date.now().toString(36) + Math.random().toString(36).substr(2)
+            "id": Date.now().toString(36) + Math.random().toString(36).substr(2),
+            "layerConfig": currentDenseState
         }))
-
+        dispatch(setCurrentDenseLayer(null))    
     }
 
   return (
@@ -106,7 +109,13 @@ const NewLayer = () => {
 
         </div>
         <hr/>
-        <Button variant="dark w-100" onClick={() => handleAddClick()}>Add</Button>
+
+
+        <Button variant="dark w-100" onClick={() => handleAddClick()} disabled={
+            !currentDenseState
+        }>Add</Button>
+        
+        
     </>
   )
 }
