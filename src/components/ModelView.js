@@ -32,7 +32,7 @@ const ModelView = () => {
             {modelLayers.length !== 0 && <ModelTree />}
             
         </div>
-        <button className="btn btn-dark mt-5" onClick={() => handleCompileClick()}>Compile Model</button>
+        <button className="btn btn-dark mt-5" onClick={() => handleCompileClick()} disabled={modelLayers}>Compile Model</button>
      </div>
     </>
   )
