@@ -49,7 +49,7 @@ const Data = () => {
 
         <div className='mt-5'>
             <label htmlFor="files" className="btn text-light bg-dark d-flex justify-content-center align-items-center p-4 label-btn">Upload</label>
-            <input id="files" type="file"  style={{visibility:'hidden'}}  onChange={(e) => handleFileChange(e)} className='bg-dark d-flex justify-content-center align-items-center'/>
+            <input id="files" type="file"  style={{visibility:'hidden'}}  onChange={(e) => handleFileChange(e)} className='bg-dark d-flex justify-content-center align-items-center' accept='.csv'/>
         </div>
         </div>
         {dataframe && <DataTable/>}

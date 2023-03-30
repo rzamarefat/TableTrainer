@@ -34,7 +34,6 @@ const DataTable =  () => {
     <div className='row'>
       <h6>Number of all samples: {totalNumberOfSamples}</h6>
       <hr/>
-      <h6>Features, Targets, Data Types</h6>
       <div className='d-flex flex-column'>
       <Table striped bordered hover variant="light">
           <thead>
@@ -51,7 +50,7 @@ const DataTable =  () => {
                 <tbody>
                   <tr>
                     <td>{c}</td>
-                    <td className='d-flex flex-row justify-content-between'>
+                    <td className='d-flex flex-row'>
                     <Form.Check
                         inline
                         label="Feature"
@@ -85,13 +84,6 @@ const DataTable =  () => {
                       <Form.Check
                           inline
                           label="Categorical"
-                          name={`${c}-group`}
-                          type="radio"
-                          id="elu"
-                      />
-                      <Form.Check
-                          inline
-                          label="Not-include"
                           name={`${c}-group`}
                           type="radio"
                           id="elu"
